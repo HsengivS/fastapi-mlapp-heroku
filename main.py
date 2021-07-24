@@ -1,6 +1,6 @@
 from typing import Text
 from fastapi import FastAPI
-from textblob import TextBlob
+# from textblob import TextBlob
 
 app = FastAPI()
 
@@ -10,5 +10,5 @@ def index():
 
 @app.get("/items/{text}")
 async def read_item(text: str):
-    wiki = TextBlob(text)
-    return {"result":wiki.tags}
+    # wiki = TextBlob(text)
+    return {"result":text.split()}
