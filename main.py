@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get("/")
 def index():
-    return "<h1>Welcome to hsengivs</h1>"
+    return "<h1>Say hello to hsengivs</h1>"
 
 @app.get("/items/{text}")
 async def read_item(text: str):
