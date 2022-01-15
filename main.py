@@ -1,7 +1,7 @@
 import spacy
 from fastapi import FastAPI
 
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_sm")
 
 app = FastAPI()
 
