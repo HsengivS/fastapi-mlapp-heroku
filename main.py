@@ -1,6 +1,7 @@
-from typing import Text
+import spacy
 from fastapi import FastAPI
-# from textblob import TextBlob
+
+nlp = spacy.load("en_core_web_lg")
 
 app = FastAPI()
 
@@ -8,7 +9,11 @@ app = FastAPI()
 def index():
     return "<h1>Say hello to hsengivs</h1>"
 
-@app.get("/items/{text}")
+@app.post("/ner")
 async def read_item(text: str):
-    # wiki = TextBlob(text)
-    return {"result":text.split()}
+    try:
+        doc = nlp(text)
+        result = doc.to_json()
+        return {"result":result}
+    except Exception as e:
+        return {"result": str(e)}
